@@ -3,6 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 import {IoIosArrowForward} from 'react-icons/io';
 import IpInformation from '../Ip Info/IpInformation';
+import MapSketch from '../Map/MapSketch';
 
 
 
@@ -38,32 +39,56 @@ const SearchEngine = () => {
     }
 
   }
+  const getIPAddress = async () => {
+    try {
+      const response = await axios.get('https://api.ipify.org?format=json');
+      const myIpAddress = response.data.ip;
+      console.log(myIpAddress); // or do whatever you want with the IP address
+      setIpAddress(myIpAddress)
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+    window.addEventListener("load", ()=> {
+      getIPAddress();
+    })
   return (
     <Wrapper>
-      <Form onSubmit={handleSubmit}>
-        <Input
-          type='text'
-          placeholder='Search for any IP address or domain'
-          value={ipAddress}
-          onChange={e => setIpAddress(e.target.value)}
-        />
-        <Button><IoIosArrowForward/></Button>
-      </Form>
-      {
-        error && (
-          <Error>{error}</Error>
-        )
-      }
-      <div>
+        <Position>
+          <Field>
+            <Form onSubmit={handleSubmit}>
+              <Input
+                type='text'
+                placeholder='Search for any IP address or domain'
+                value={ipAddress}
+                onChange={e => setIpAddress(e.target.value)}
+              />
+              <Button><IoIosArrowForward/></Button>
+            </Form>
+            {
+              error && (
+                <Error>{error}</Error>
+              )
+            }
+          </Field>
           <IpInformation
             ipInfo={ipInfo}
           />
+        </Position>
+      <div>
+        <MapSketch
+          ipInfo={ipInfo}
+        />
       </div>
     </Wrapper>
   )
 }
 const Wrapper = styled.div`
   
+`;
+const Position = styled.div`
+`;
+const Field = styled.div`
 `;
 const Form = styled.form`
   

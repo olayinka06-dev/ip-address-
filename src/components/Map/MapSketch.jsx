@@ -2,22 +2,22 @@ import React from 'react';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
-const Map = () => {
+import styled from 'styled-components';
+const MapSketch = ({ipInfo}) => {
     const [map, setMap] = useState(null);
 
     useEffect(() => {
-        if (map && weatherData) {
-            const leafletMap = L.map(map).setView([weatherData.coord.lat, weatherData.coord.lon], 13);
+        if (map && ipInfo) {
+            const leafletMap = L.map(map).setView([ipInfo.location.lat, ipInfo.location.lng], 13);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
                 maxZoom: 18,
             }).addTo(leafletMap);
-            L.marker([weatherData.coord.lat, weatherData.coord.lon]).addTo(leafletMap)
-                .bindPopup(`<b>${weatherData.name}</b><br>${weatherData.weather[0].description}<br>Temperature: ${Math.round(weatherData.main.temp - 273.15)} °C`)
+            L.marker([ipInfo.location.lat, ipInfo.location.lng]).addTo(leafletMap)
+                .bindPopup(`<b>Country: ${ipInfo.location.country}</b><br>City: ${ipInfo.location.city}<br>Region: ${ipInfo.location.region}`)
                 .openPopup();
             return () => leafletMap.remove();
         }
-    }, [map, weatherData]);
+    }, [map, ipInfo]);
     // const getIPAddress = async () => {
     //     try {
     //       const response = await axios.get('https://api.ipify.org?format=json');
@@ -46,9 +46,15 @@ const Map = () => {
       
   return (
     <Wrapper>
-        <div id="map" style={{ height: "400px" }} ref={(el) => setMap(el)}></div>
+        <Map id="map" style={{ height: "400px" }} ref={(el) => setMap(el)}></Map>``
     </Wrapper>
   )
 }
+const Wrapper = styled.div`
+    
+`;
+const Map = styled.div`
+    
 
-export default Map;
+`;
+export default MapSketch;
