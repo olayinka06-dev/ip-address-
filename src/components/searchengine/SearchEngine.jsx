@@ -57,14 +57,13 @@ const SearchEngine = () => {
         {
           ipInfo && (
             <IpInfo>
-              <Info>{ipInfo.ip}</Info>
-              <Info>{ipInfo.location.country}</Info>
-              <Info>{ipInfo.location.region}</Info>
-              <Info>{ipInfo.location.city}</Info>
-              <Info>{ipInfo.location.postalCode}</Info>
-              <Info>{ipInfo.location.timezone}</Info>
-              <Info>{ipInfo.location.isp}</Info>
-              <Info>{ipInfo.ip}</Info>
+              <Info>IP: {ipInfo.ip}</Info>
+              <Info>Country: {ipInfo.location.country}</Info>
+              <Info>Region: {ipInfo.location.region}</Info>
+              <Info>City: {ipInfo.location.city}</Info>
+              <Info>PostalCode: {ipInfo.location.postalCode}</Info>
+              <Info>TimeZone: {ipInfo.location.timezone}</Info>
+              <Info>Isp: {ipInfo.location.isp}</Info>
             </IpInfo>
           )
         }
