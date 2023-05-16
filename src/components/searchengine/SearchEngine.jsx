@@ -10,7 +10,7 @@ const SearchEngine = () => {
   const [ipInfo, setIpInfo] = useState("");
   const [error, setError] = useState("");
   const handleSubmit = async (e) => {
-
+    e.preventDefault();
     if (!ipAddress) {
       setError("Please enter an Your Ip Address");
       return;
@@ -28,7 +28,7 @@ const SearchEngine = () => {
       if (error.request) {
         setError("Ip Address not Found")
       }
-      else if (condition) {
+      else if (error.response) {
         setError("Network Error, Please Check your Internet Connection")
       }
       else{
@@ -48,6 +48,27 @@ const SearchEngine = () => {
         />
         <Button><IoIosArrowForward/></Button>
       </Form>
+      {
+        error && (
+          <Error>{error}</Error>
+        )
+      }
+      <div>
+        {
+          ipInfo && (
+            <IpInfo>
+              <Info>{ipInfo.ip}</Info>
+              <Info>{ipInfo.location.country}</Info>
+              <Info>{ipInfo.location.region}</Info>
+              <Info>{ipInfo.location.city}</Info>
+              <Info>{ipInfo.location.postalCode}</Info>
+              <Info>{ipInfo.location.timezone}</Info>
+              <Info>{ipInfo.location.isp}</Info>
+              <Info>{ipInfo.ip}</Info>
+            </IpInfo>
+          )
+        }
+      </div>
     </Wrapper>
   )
 }
@@ -63,5 +84,11 @@ const Input = styled.input`
 const Button = styled.button`
   
 `;
+const IpInfo = styled.div`
+`;
+const Info = styled.p`
+`;
+const Error = styled.div`
+`
 
 export default SearchEngine;
