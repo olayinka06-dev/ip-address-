@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import {IoIosArrowForward} from 'react-icons/io';
+import IpInformation from '../Ip Info/IpInformation';
 
 
 
@@ -54,19 +55,9 @@ const SearchEngine = () => {
         )
       }
       <div>
-        {
-          ipInfo && (
-            <IpInfo>
-              <Info>IP: {ipInfo.ip}</Info>
-              <Info>Country: {ipInfo.location.country}</Info>
-              <Info>Region: {ipInfo.location.region}</Info>
-              <Info>City: {ipInfo.location.city}</Info>
-              <Info>PostalCode: {ipInfo.location.postalCode}</Info>
-              <Info>TimeZone: {ipInfo.location.timezone}</Info>
-              <Info>Isp: {ipInfo.location.isp}</Info>
-            </IpInfo>
-          )
-        }
+          <IpInformation
+            ipInfo={ipInfo}
+          />
       </div>
     </Wrapper>
   )
@@ -82,10 +73,6 @@ const Input = styled.input`
 `;
 const Button = styled.button`
   
-`;
-const IpInfo = styled.div`
-`;
-const Info = styled.p`
 `;
 const Error = styled.div`
 `
