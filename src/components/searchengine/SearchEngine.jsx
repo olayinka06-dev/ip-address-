@@ -126,8 +126,9 @@ const Form = styled.form`
   max-width: 600px;
 `;
 const Base = styled.div`
-  position: absolute;
-  top: 99% !important;
+  position: fixed;
+  top: 49% !important;
+  z-index: 1000;
 `;
 const Input = styled.input`
   width: 85%;
