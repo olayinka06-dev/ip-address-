@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import '../../index.css';
 
 
 const IpInformation = ({ipInfo}) => {
+
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(!show)
+}
+
   return (
     <Wrapper>
         {
@@ -15,11 +22,19 @@ const IpInformation = ({ipInfo}) => {
               </Info>
               <Info>
                 <h4>Location</h4>
-                <h2>{ipInfo.location.country}</h2>
+                <Showmore>
+                  <h2>{ipInfo.location.country}</h2>
+                  <button onClick={handleClick}>
+                  show more
+                  <div style={{height: `${show ? "10vh" : "0vh"}`}}>
+                    <h3>Region: {ipInfo.location.region}</h3>
+                    <h3>City: {ipInfo.location.city}</h3>
+                    <h3>PostalCode: {ipInfo.location.postalCode}</h3>
+                  </div>
+                  </button>
+                </Showmore>
                 </Info>
-              {/* <Info>Region: {ipInfo.location.region}</Info>
-              <Info>City: {ipInfo.location.city}</Info>
-              <Info>PostalCode: {ipInfo.location.postalCode}</Info> */}
+              {/*  */}
               <Info>
                 <h4>Timezone</h4>
                 <h2>UTC {ipInfo.location.timezone}</h2>
@@ -54,12 +69,35 @@ const IpInfo = styled.div`
     gap: 12px;
   }
 `;
+const Showmore = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  button{
+    position: relative;
+    border: none;
+    background-color: white;
+    color: black;
+  }
+  div{
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+`
 const Info = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 20px;
   border-right: 1px solid lightgray;
+  &:nth-of-type(4){
+    border: none;
+  }
   h4{
     color: #b3aeae;
   }
