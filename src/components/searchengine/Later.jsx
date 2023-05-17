@@ -7,6 +7,9 @@ import MapSketch from '../Map/MapSketch';
 import '../../index.css';
 import bgimg from '../images/pattern-bg-desktop.png';
 
+
+
+
 const SearchEngine = () => {
   const [ipAddress, setIpAddress] = useState("");
   const [ipInfo, setIpInfo] = useState("");
@@ -60,30 +63,28 @@ const SearchEngine = () => {
     })
   return (
     <Wrapper>
-      <Center>
-        <Field>
-          <h1>IP Address Tracker</h1>
-          <Form onSubmit={handleSubmit}>
-            <Input
-              type='text'
-              placeholder='Search for any IP address or domain'
-              value={ipAddress}
-              onChange={e => setIpAddress(e.target.value)}
-            />
-            <Button><IoIosArrowForward/></Button>
-          </Form>
-          {
-            error && (
-              <Error>{error}</Error>
-            )
-          }
-        </Field>
-        <Base>
-          <IpInformation
-            ipInfo={ipInfo}
+      <Field>
+        <h1>IP Address Tracker</h1>
+        <Form onSubmit={handleSubmit}>
+          <Input
+            type='text'
+            placeholder='Search for any IP address or domain'
+            value={ipAddress}
+            onChange={e => setIpAddress(e.target.value)}
           />
-        </Base>
-      </Center>
+          <Button><IoIosArrowForward/></Button>
+        </Form>
+        {
+          error && (
+            <Error>{error}</Error>
+          )
+        }
+      </Field>
+      <Base>
+        <IpInformation
+          ipInfo={ipInfo}
+        />
+      </Base>
       <div>
         <MapSketch
           ipInfo={ipInfo}
@@ -93,18 +94,16 @@ const SearchEngine = () => {
   )
 }
 const Wrapper = styled.div`
-
-`;
-const Center = styled.div`
   background-image: url(${bgimg});
+  width: 100%;
   height: 40vh;
   background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 `;
 const Field = styled.div`
   width: 100%;
@@ -113,9 +112,6 @@ const Field = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  h1{
-    color: red;
-  }
 `;
 const Form = styled.form`
   width: 100%;
@@ -124,9 +120,9 @@ const Form = styled.form`
   align-items: center;
 `;
 const Base = styled.div`
-  position: fixed;
+  /* position: absolute;
   top: 32% !important;
-  z-index: 1000;
+  z-index: 1000; */
 `;
 const Input = styled.input`
   width: 85%;
@@ -149,6 +145,7 @@ const Button = styled.button`
   color: white;
 `;
 const Error = styled.div`
-`
+  color: red;
+`;
 
 export default SearchEngine;

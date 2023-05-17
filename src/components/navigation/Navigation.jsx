@@ -12,6 +12,7 @@ const Navigation = () => {
 const Wrapper = styled.div`
 `;
 const Img = styled.img`
+  height: 40vh;
   width: 100%;
 `;
 export default Navigation

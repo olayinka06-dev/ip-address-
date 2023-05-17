@@ -5,7 +5,9 @@ import {IoIosArrowForward} from 'react-icons/io';
 import IpInformation from '../Ip Info/IpInformation';
 import MapSketch from '../Map/MapSketch';
 import '../../index.css';
-import bgimg from '../images/pattern-bg-desktop.png';
+
+
+
 
 const SearchEngine = () => {
   const [ipAddress, setIpAddress] = useState("");
@@ -61,28 +63,30 @@ const SearchEngine = () => {
   return (
     <Wrapper>
       <Center>
-        <Field>
-          <h1>IP Address Tracker</h1>
-          <Form onSubmit={handleSubmit}>
-            <Input
-              type='text'
-              placeholder='Search for any IP address or domain'
-              value={ipAddress}
-              onChange={e => setIpAddress(e.target.value)}
+        <Position>
+          <Field>
+            <h1>IP Address Tracker</h1>
+            <Form onSubmit={handleSubmit}>
+              <Input
+                type='text'
+                placeholder='Search for any IP address or domain'
+                value={ipAddress}
+                onChange={e => setIpAddress(e.target.value)}
+              />
+              <Button><IoIosArrowForward/></Button>
+            </Form>
+            {
+              error && (
+                <Error>{error}</Error>
+              )
+            }
+          </Field>
+          <Base>
+            <IpInformation
+              ipInfo={ipInfo}
             />
-            <Button><IoIosArrowForward/></Button>
-          </Form>
-          {
-            error && (
-              <Error>{error}</Error>
-            )
-          }
-        </Field>
-        <Base>
-          <IpInformation
-            ipInfo={ipInfo}
-          />
-        </Base>
+          </Base>
+        </Position>
       </Center>
       <div>
         <MapSketch
@@ -93,35 +97,33 @@ const SearchEngine = () => {
   )
 }
 const Wrapper = styled.div`
-
+ /* position: relative; */
 `;
 const Center = styled.div`
-  background-image: url(${bgimg});
-  height: 40vh;
-  background-repeat: no-repeat;
-  background-position: center;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+const Position = styled.div`
+  width: 100%;
+  max-width: 1000px;
+  position: absolute;
+  top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 const Field = styled.div`
-  width: 100%;
-  max-width: 670px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  h1{
-    color: red;
-  }
 `;
 const Form = styled.form`
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  max-width: 300px;
 `;
 const Base = styled.div`
   position: fixed;

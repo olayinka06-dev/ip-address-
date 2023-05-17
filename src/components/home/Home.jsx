@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components'
-import Navigation from '../navigation/Navigation';
 import SearchEngine from '../searchengine/SearchEngine';
+import '../../index.css'
 
 const Home = () => {
   return (
     <Wrapper>
-        <Navigation/>
         <SearchEngine/>
     </Wrapper>
   )

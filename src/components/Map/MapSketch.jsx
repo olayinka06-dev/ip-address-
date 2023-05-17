@@ -20,35 +20,11 @@ const MapSketch = ({ipInfo}) => {
             return () => leafletMap.remove();
         }
     }, [map, ipInfo]);
-    // const getIPAddress = async () => {
-    //     try {
-    //       const response = await axios.get('https://api.ipify.org?format=json');
-    //       const ipAddress = response.data.ip;
-    //       console.log(ipAddress); // or do whatever you want with the IP address
-    //     } catch (error) {
-    //       console.error('Error:', error);
-    //     }
-    //   };
-//       import React, { useEffect } from 'react';
-
-// const YourComponent = () => {
-//   useEffect(() => {
-//     getIPAddress();
-//   }, []);
-
-//   // Rest of your component code...
-
-//   return (
-//     // JSX code for your component...
-//   );
-// };
-
-// export default YourComponent;
 
       
   return (
     <Wrapper>
-        <Map id="map" style={{ height: "400px" }} ref={(el) => setMap(el)}></Map>
+        <Map id="map"  ref={(el) => setMap(el)}></Map>
     </Wrapper>
   )
 }
@@ -57,6 +33,8 @@ const Wrapper = styled.div`
 `;
 const Map = styled.div`
     z-index: 10;
+    height: 60vh;
+    width: 100%;
 
 `;
 export default MapSketch;
