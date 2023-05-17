@@ -45,8 +45,8 @@ const SearchEngine = () => {
     try {
       const IP_KEY = "at_iPdZbBjjZFpxMAg5R5gs3ZY4uKbkv";
       const IP_URL = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${IP_KEY}&ipAddress=${ipAddress}`;
-      const responseTwo = await axios.get('https://api.ipify.org?format=json');
       const response = await axios.get(IP_URL);
+      const responseTwo = await axios.get('https://api.ipify.org?format=json');
       const myIpAddress = responseTwo.data.ip;
 
       setIpInfo(response.data);
@@ -81,9 +81,11 @@ const SearchEngine = () => {
               )
             }
           </Field>
-          <IpInformation
-            ipInfo={ipInfo}
-          />
+          <Base>
+            <IpInformation
+              ipInfo={ipInfo}
+            />
+          </Base>
         </Position>
       </Center>
       <div>
@@ -95,7 +97,7 @@ const SearchEngine = () => {
   )
 }
 const Wrapper = styled.div`
-  /* position: relative; */
+ /* position: relative; */
 `;
 const Center = styled.div`
   width: 100%;
@@ -106,7 +108,7 @@ const Center = styled.div`
 `
 const Position = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   position: absolute;
   top: 15%;
   display: flex;
@@ -122,6 +124,10 @@ const Form = styled.form`
   flex-direction: row;
   align-items: center;
   max-width: 600px;
+`;
+const Base = styled.div`
+  position: absolute;
+  top: 25%;
 `;
 const Input = styled.input`
   width: 85%;
