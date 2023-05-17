@@ -127,7 +127,7 @@ const Form = styled.form`
 `;
 const Base = styled.div`
   position: fixed;
-  top: 49% !important;
+  top: 39% !important;
   z-index: 1000;
 `;
 const Input = styled.input`
