@@ -108,13 +108,14 @@ const Center = styled.div`
 `;
 const Field = styled.div`
   width: 100%;
-  max-width: 670px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 26px;
   h1{
-    color: red;
+    color: white;
   }
 `;
 const Form = styled.form`
@@ -149,6 +150,13 @@ const Button = styled.button`
   color: white;
 `;
 const Error = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: red;
+  position: relative;
+  bottom: 20px;
 `
 
 export default SearchEngine;

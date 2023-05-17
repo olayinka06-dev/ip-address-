@@ -9,13 +9,22 @@ const IpInformation = ({ipInfo}) => {
         {
           ipInfo && (
             <IpInfo>
-              <Info>IP: {ipInfo.ip}</Info>
+              <Info>
+                <h4>IP Address</h4>
+                <h1>{ipInfo.ip}</h1>
+              </Info>
               <Info>Country: {ipInfo.location.country}</Info>
               <Info>Region: {ipInfo.location.region}</Info>
               <Info>City: {ipInfo.location.city}</Info>
               <Info>PostalCode: {ipInfo.location.postalCode}</Info>
-              <Info>TimeZone: {ipInfo.location.timezone}</Info>
-              <Info>Isp: {ipInfo.location.isp}</Info>
+              <Info>
+                <h4>Timezone</h4>
+                <h1>UTC {ipInfo.location.timezone}</h1>
+              </Info>
+              <Info>
+                <h4>ISP</h4>
+                <h1>{ipInfo.location.isp}</h1>
+              </Info>
             </IpInfo>
           )
         }
@@ -35,8 +44,7 @@ const IpInfo = styled.div`
   padding: 0 10px;
   border-radius: 20px;
   z-index: 20;
-  /* position: absolute; */
 `;
-const Info = styled.p`
+const Info = styled.div`
 `;
 export default IpInformation;
