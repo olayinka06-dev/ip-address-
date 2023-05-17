@@ -11,7 +11,7 @@ const MapSketch = ({ipInfo}) => {
     useEffect(() => {
         if (map && ipInfo) {
             const leafletMap = L.map(map).setView([ipInfo.location.lat, ipInfo.location.lng], 13);
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
             }).addTo(leafletMap);
             L.marker([ipInfo.location.lat, ipInfo.location.lng]).addTo(leafletMap)

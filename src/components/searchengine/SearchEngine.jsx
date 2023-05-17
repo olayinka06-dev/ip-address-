@@ -125,6 +125,7 @@ const Form = styled.form`
   align-items: center;
 `;
 const Base = styled.div`
+width: 80%;
   position: fixed;
   top: 32% !important;
   z-index: 1000;
