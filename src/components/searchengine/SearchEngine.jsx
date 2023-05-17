@@ -105,6 +105,9 @@ const Center = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: 950px) {
+      padding: 0 45px;
+  }
 `;
 const Field = styled.div`
   width: 100%;
@@ -113,6 +116,7 @@ const Field = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-bottom: 40px;
   gap: 26px;
   h1{
     color: white;
@@ -126,8 +130,8 @@ const Form = styled.form`
 `;
 const Base = styled.div`
 width: 80%;
-  position: fixed;
-  top: 32% !important;
+  position: absolute;
+  top: 30% !important;
   z-index: 1000;
 `;
 const Input = styled.input`

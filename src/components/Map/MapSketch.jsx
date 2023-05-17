@@ -35,6 +35,8 @@ const Map = styled.div`
     z-index: 10;
     height: 60vh;
     width: 100%;
-
+@media screen and (max-width: 950px) {
+   height: 100vh;
+  }
 `;
 export default MapSketch;
