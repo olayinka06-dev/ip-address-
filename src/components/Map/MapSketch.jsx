@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 import styled from 'styled-components';
+import '../../index.css';
+
 const MapSketch = ({ipInfo}) => {
     const [map, setMap] = useState(null);
 
@@ -46,7 +48,7 @@ const MapSketch = ({ipInfo}) => {
       
   return (
     <Wrapper>
-        <Map id="map" style={{ height: "400px" }} ref={(el) => setMap(el)}></Map>``
+        <Map id="map" style={{ height: "400px" }} ref={(el) => setMap(el)}></Map>
     </Wrapper>
   )
 }

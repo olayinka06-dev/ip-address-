@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import {IoIosArrowForward} from 'react-icons/io';
 import IpInformation from '../Ip Info/IpInformation';
 import MapSketch from '../Map/MapSketch';
+import '../../index.css';
+
 
 
 
@@ -14,7 +16,7 @@ const SearchEngine = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!ipAddress) {
-      setError("Please enter an Your Ip Address");
+      setError("Please enter Your Ip Address");
       return;
     }
 
@@ -27,10 +29,10 @@ const SearchEngine = () => {
       setError("")
       
     } catch (error) {
-      if (error.request) {
+      if (error.response) {
         setError("Ip Address not Found")
       }
-      else if (error.response) {
+      else if (error.request) {
         setError("Network Error, Please Check your Internet Connection")
       }
       else{
@@ -41,9 +43,15 @@ const SearchEngine = () => {
   }
   const getIPAddress = async () => {
     try {
-      const response = await axios.get('https://api.ipify.org?format=json');
-      const myIpAddress = response.data.ip;
-      console.log(myIpAddress); // or do whatever you want with the IP address
+      const IP_KEY = "at_iPdZbBjjZFpxMAg5R5gs3ZY4uKbkv";
+      const IP_URL = `https://geo.ipify.org/api/v2/country,city,vpn?apiKey=${IP_KEY}&ipAddress=${ipAddress}`;
+      const responseTwo = await axios.get('https://api.ipify.org?format=json');
+      const response = await axios.get(IP_URL);
+      const myIpAddress = responseTwo.data.ip;
+
+      setIpInfo(response.data);
+      // setError("")
+      // console.log(myIpAddress); // or do whatever you want with the IP address
       setIpAddress(myIpAddress)
     } catch (error) {
       console.error('Error:', error);
@@ -54,8 +62,10 @@ const SearchEngine = () => {
     })
   return (
     <Wrapper>
+      <Center>
         <Position>
           <Field>
+            <h1>IP Address Tracker</h1>
             <Form onSubmit={handleSubmit}>
               <Input
                 type='text'
@@ -75,6 +85,7 @@ const SearchEngine = () => {
             ipInfo={ipInfo}
           />
         </Position>
+      </Center>
       <div>
         <MapSketch
           ipInfo={ipInfo}
@@ -84,13 +95,31 @@ const SearchEngine = () => {
   )
 }
 const Wrapper = styled.div`
-  
+  /* position: relative; */
 `;
+const Center = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
 const Position = styled.div`
+  width: 100%;
+  max-width: 800px;
+  position: absolute;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 const Field = styled.div`
 `;
 const Form = styled.form`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   
 `;
 const Input = styled.input`
