@@ -23,9 +23,19 @@ const IpInformation = ({ipInfo}) => {
   )
 }
 const Wrapper = styled.div`
-
+position: relative;
 `;
 const IpInfo = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 13vh;
+  background-color: white;
+  padding: 0 10px;
+  border-radius: 20px;
+  z-index: 20;
+  /* position: absolute; */
 `;
 const Info = styled.p`
 `;

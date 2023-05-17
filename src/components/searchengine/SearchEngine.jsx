@@ -117,16 +117,31 @@ const Position = styled.div`
 const Field = styled.div`
 `;
 const Form = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  
+  max-width: 600px;
 `;
 const Input = styled.input`
+  width: 85%;
+  padding: 17px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-right: none;
+  border: none;
+  outline: none;
   
 `;
 const Button = styled.button`
-  
+  width: 15%;
+  padding: 17px;
+  border-left: none;
+  border: none;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: black;
+  color: white;
 `;
 const Error = styled.div`
 `

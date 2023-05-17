@@ -56,7 +56,7 @@ const Wrapper = styled.div`
     
 `;
 const Map = styled.div`
-    
+    z-index: 10;
 
 `;
 export default MapSketch;
