@@ -50,7 +50,6 @@ const IpInformation = ({ipInfo}) => {
   )
 }
 const Wrapper = styled.div`
-/* position: relative; */
 `;
 const IpInfo = styled.div`
   width: 100%;
