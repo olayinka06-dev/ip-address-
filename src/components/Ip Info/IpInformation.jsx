@@ -1,21 +1,27 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import '../../index.css';
-
-
+import {MdLocationPin} from 'react-icons/md'
 const IpInformation = ({ipInfo}) => {
 
   const [show, setShow] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
   const handleClick = () => {
     setShow(!show)
 }
+  const handleShowInfo = () => {
+    setShowInfo(!showInfo)
+  }
 
   return (
     <Wrapper>
+        <div className='location'>
+          <span onClick={handleShowInfo}><MdLocationPin className='span'/></span>
+        </div>
         {
           ipInfo && (
-            <IpInfo>
+            <IpInfo style={{height: `${showInfo ? "40vh" : "0vh"}`,}}>
               <Info>
                 <h4>IP Address</h4>
                 <h2>{ipInfo.ip}</h2>
@@ -50,6 +56,25 @@ const IpInformation = ({ipInfo}) => {
   )
 }
 const Wrapper = styled.div`
+  .location{
+    display: none;
+  }
+  @media screen and (max-width: 950px) {
+    .location{
+      display: block;
+    }
+    .span{
+      color: white;
+      font-size: 30px;
+      animation: animate 2s linear infinite;
+
+    }
+    @keyframes animate {
+    0%{transform: translateY(10px);}
+    50%{transform: translateY(0px);}
+    100%{transform: translateY(10px);}
+    }
+}
 `;
 const IpInfo = styled.div`
   width: 100%;
@@ -66,6 +91,7 @@ const IpInfo = styled.div`
   @media screen and (max-width: 950px) {
     flex-direction: column;
     gap: 12px;
+    overflow: hidden;
   }
 `;
 const Showmore = styled.div`
